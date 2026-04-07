@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Lab - 3D Glowing Buttons Collection</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 2rem;
+			color: white;
+		}
+
+		header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			margin-bottom: 0.5rem;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+		}
+
+		.tagline {
+			font-size: 1.1rem;
+			opacity: 0.9;
+			font-weight: 300;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			max-width: 1200px;
+			width: 100%;
+		}
+
+		.card {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 2rem;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			text-align: center;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+		}
+
+		.card h2 {
+			font-size: 1.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.card p {
+			opacity: 0.8;
+			margin-bottom: 1.5rem;
+			font-size: 0.95rem;
+		}
+
+		.demo-btn {
+			display: inline-block;
+			padding: 12px 30px;
+			background: white;
+			color: #667eea;
+			text-decoration: none;
+			border-radius: 50px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.demo-btn:hover {
+			background: #f0f0f0;
+			transform: scale(1.05);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+		}
+
+		.github-link {
+			margin-top: 3rem;
+			text-align: center;
+		}
+
+		.github-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 12px 24px;
+			background: rgba(255, 255, 255, 0.2);
+			color: white;
+			text-decoration: none;
+			border-radius: 8px;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.github-btn:hover {
+			background: rgba(255, 255, 255, 0.3);
+			transform: translateY(-2px);
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2rem;
+			}
+
+			.gallery {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>✨ 3D Glowing Buttons Collection</h1>
+		<p class="tagline">Interactive buttons with smooth animations and glowing effects</p>
+	</header>
+
+	<div class="gallery">
+		<div class="card">
+			<h2>💡 Headlight Switch</h2>
+			<p>Realistic automotive-style toggle with 3D lever rotation and glowing yellow effect</p>
+			<a href="3D_Button/Glowing_headlight_button/index.html" class="demo-btn">View Demo</a>
+		</div>
+
+		<div class="card">
+			<h2>📢 Horn Button</h2>
+			<p>Circular button with pressure animation and expanding sound wave visualization</p>
+			<a href="3D_Button/Glowing_horn_button/index.html" class="demo-btn">View Demo</a>
+		</div>
+
+		<div class="card">
+			<h2>⚡ Power Button</h2>
+			<p>Classic power button with 3D circular design and smooth glow transitions</p>
+			<a href="3D_Button/Glowing_on_off_button/index.html" class="demo-btn">View Demo</a>
+		</div>
+	</div>
+
+	<div class="github-link">
+		<a href="https://github.com" class="github-btn">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+			</svg>
+			View on GitHub
+		</a>
+	</div>
+</body>
+</html>
