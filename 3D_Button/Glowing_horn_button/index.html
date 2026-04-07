@@ -7,29 +7,31 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<!-- SVG Symbol Definition -->
+	<svg style="display: none;">
+		<symbol id="horn-icon" viewBox="0 0 24 24">
+			<g class="horn-icon">
+				<path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
+				<path class="wave wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+				<path class="wave wave-2" d="M17.07 6.93a8 8 0 0 1 0 10.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+				<path class="wave wave-3" d="M18.364 5.636a11 11 0 0 1 0 12.728" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+			</g>
+		</symbol>
+	</svg>
+
 	<main>
 		<div class="col">
 			<button id="hornBtn1" class="horn-btn" type="button" aria-pressed="false">
-				<svg class="horn-btn__icon" viewBox="0 0 24 24" width="32px" height="32px" aria-hidden="true">
-					<g class="horn-icon">
-						<path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
-						<path class="wave wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-						<path class="wave wave-2" d="M17.07 6.93a8 8 0 0 1 0 10.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-						<path class="wave wave-3" d="M18.364 5.636a11 11 0 0 1 0 12.728" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-					</g>
+				<svg class="horn-btn__icon" width="32px" height="32px" aria-hidden="true">
+					<use href="#horn-icon"/>
 				</svg>
 				<span class="horn-btn__sr">Horn (Light)</span>
 			</button>
 		</div>
 		<div class="col col--dark">
 			<button id="hornBtn2" class="horn-btn" type="button" aria-pressed="false">
-				<svg class="horn-btn__icon" viewBox="0 0 24 24" width="32px" height="32px" aria-hidden="true">
-					<g class="horn-icon">
-						<path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
-						<path class="wave wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-						<path class="wave wave-2" d="M17.07 6.93a8 8 0 0 1 0 10.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-						<path class="wave wave-3" d="M18.364 5.636a11 11 0 0 1 0 12.728" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
-					</g>
+				<svg class="horn-btn__icon" width="32px" height="32px" aria-hidden="true">
+					<use href="#horn-icon"/>
 				</svg>
 				<span class="horn-btn__sr">Horn (Dark)</span>
 			</button>
