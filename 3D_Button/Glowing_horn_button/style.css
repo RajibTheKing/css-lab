@@ -1,0 +1,287 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	/* surface and button base */
+	--hue: 223;
+	--sat: 10%;
+	/* horn button accent - amber/orange */
+	--horn-hue: 38;
+	--horn-sat: 95%;
+	--horn-light: 55%;
+	/* color variables */
+	--horn-color: hsl(var(--horn-hue), var(--horn-sat), var(--horn-light));
+	--trans-dur: 0.3s;
+	--trans-timing: ease-in-out;
+	--trans-timing2: cubic-bezier(0.42, -1.84, 0.42, 1.84);
+	--trans-timing3: cubic-bezier(0.42, 0, 0.42, 1.84);
+	font-size: 20px;
+}
+
+body,
+button {
+	font: 1em/1.5 sans-serif;
+}
+
+body {
+	height: 100vh;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+/* Light Theme Column */
+.col {
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 90%),
+		hsl(var(--hue), var(--sat), 75%)
+	);
+	display: flex;
+	flex: 1;
+	padding: 1.5em 0;
+	min-height: 13em;
+}
+
+/* Horn Button - Round Shape */
+.horn-btn {
+	background-color: transparent;
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 80%),
+		hsl(var(--hue), var(--sat), 85%)
+	);
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 0.125em hsla(var(--horn-hue), var(--horn-sat), 50%, 0),
+		0 0 0.25em hsl(var(--hue), var(--sat), 55%) inset,
+		0 0.125em 0.125em hsl(var(--hue), var(--sat), 90%);
+	cursor: pointer;
+	margin: auto;
+	outline: transparent;
+	position: relative;
+	width: 11em;
+	height: 11em;
+	transition: box-shadow var(--trans-dur) var(--trans-timing);
+	-webkit-tap-highlight-color: transparent;
+}
+
+.horn-btn:focus-visible {
+	box-shadow:
+		0 0 0 0.125em hsla(var(--horn-hue), var(--horn-sat), 50%, 1),
+		0 0 0.25em hsl(var(--hue), var(--sat), 55%) inset,
+		0 0.125em 0.125em hsl(var(--hue), var(--sat), 90%);
+}
+
+.horn-btn:before,
+.horn-btn:after {
+	border-radius: inherit;
+	content: "";
+	display: block;
+	position: absolute;
+	clip-path: inherit;
+}
+
+/* Outer shadow layer */
+.horn-btn:before {
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 80%)
+	);
+	box-shadow: 0 0.75em 0.75em 0.25em hsla(var(--hue), 0%, 0%, 0.3);
+	top: 1.5em;
+	left: 1.5em;
+	width: 8em;
+	height: 8em;
+	transition:
+		box-shadow var(--trans-dur) var(--trans-timing2),
+		transform var(--trans-dur) var(--trans-timing2);
+}
+
+/* Inner button surface */
+.horn-btn:after {
+	background-color: hsl(var(--hue), var(--sat), 75%);
+	background-image: linear-gradient(
+		hsla(var(--hue), var(--sat), 90%, 0),
+		hsl(var(--hue), var(--sat), 90%)
+	);
+	box-shadow:
+		0 0.0625em 0 hsl(var(--hue), var(--sat), 90%) inset,
+		0 -0.0625em 0 hsl(var(--hue), var(--sat), 90%) inset,
+		0 0 0 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.1) inset;
+	top: 3em;
+	left: 3em;
+	width: 5em;
+	height: 5em;
+	transition:
+		background-color var(--trans-dur) var(--trans-timing),
+		box-shadow var(--trans-dur) var(--trans-timing),
+		transform var(--trans-dur) var(--trans-timing2);
+}
+
+/* Horn Icon */
+.horn-btn__icon {
+	display: block;
+	position: absolute;
+	top: calc(50% - 1em);
+	left: calc(50% - 1em);
+	width: 2em;
+	height: 2em;
+	transition: filter var(--trans-dur) var(--trans-timing);
+	z-index: 1;
+}
+
+.horn-btn__icon .horn-icon {
+	color: hsl(var(--hue), var(--sat), 70%);
+	transition: color var(--trans-dur) var(--trans-timing);
+}
+
+.horn-btn__icon .wave {
+	opacity: 0;
+	transform-origin: center;
+	transition: opacity 0.2s var(--trans-timing);
+}
+
+.horn-btn__sr {
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+}
+
+/* Pressed State - Active Horn */
+.horn-btn[aria-pressed="true"]:before,
+.horn-btn[aria-pressed="true"]:after,
+.horn-btn[aria-pressed="true"] .horn-btn__icon {
+	transform: scale(0.95);
+}
+
+.horn-btn[aria-pressed="true"]:before {
+	box-shadow: 0 0.375em 0.375em 0 hsla(var(--hue), 0%, 0%, 0.3);
+	transition-timing-function: var(--trans-timing3);
+}
+
+.horn-btn[aria-pressed="true"]:after {
+	background-color: hsl(var(--horn-hue), var(--horn-sat), 60%);
+	box-shadow:
+		0 0.0625em 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.5) inset,
+		0 -0.0625em 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.5) inset,
+		0 0 1em 0.5em hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.2) inset,
+		0 0 2em 1em hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.3);
+	transition-timing-function: var(--trans-timing), var(--trans-timing), var(--trans-timing3);
+}
+
+.horn-btn[aria-pressed="true"] .horn-btn__icon {
+	filter: drop-shadow(0 0 0.5em var(--horn-color));
+}
+
+.horn-btn[aria-pressed="true"] .horn-btn__icon .horn-icon {
+	color: var(--horn-color);
+}
+
+/* Animated sound waves */
+.horn-btn[aria-pressed="true"] .wave {
+	opacity: 1;
+	animation: wave-pulse 1s ease-in-out infinite;
+}
+
+.horn-btn[aria-pressed="true"] .wave-1 {
+	animation-delay: 0s;
+}
+
+.horn-btn[aria-pressed="true"] .wave-2 {
+	animation-delay: 0.15s;
+}
+
+.horn-btn[aria-pressed="true"] .wave-3 {
+	animation-delay: 0.3s;
+}
+
+@keyframes wave-pulse {
+	0%, 100% {
+		opacity: 0.3;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+}
+
+/* Dark Theme */
+.col--dark {
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 20%),
+		hsl(var(--hue), var(--sat), 5%)
+	);
+}
+
+.col--dark .horn-btn {
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 10%),
+		hsl(var(--hue), var(--sat), 15%)
+	);
+	box-shadow:
+		0 0 0 0.125em hsla(var(--horn-hue), var(--horn-sat), 50%, 0),
+		0 0 0.25em hsl(var(--hue), var(--sat), 5%) inset,
+		0 0.125em 0.125em hsl(var(--hue), var(--sat), 25%);
+}
+
+.col--dark .horn-btn:focus-visible {
+	box-shadow:
+		0 0 0 0.125em hsla(var(--horn-hue), var(--horn-sat), 50%, 1),
+		0 0 0.25em hsl(var(--hue), var(--sat), 5%) inset,
+		0 0.125em 0.125em hsl(var(--hue), var(--sat), 25%);
+}
+
+.col--dark .horn-btn:before {
+	background-image: linear-gradient(
+		hsl(var(--hue), var(--sat), 20%),
+		hsl(var(--hue), var(--sat), 10%)
+	);
+	box-shadow: 0 0.75em 0.75em 0.25em hsla(var(--hue), 0%, 0%, 0.7);
+}
+
+.col--dark .horn-btn:after {
+	background-color: hsl(var(--hue), var(--sat), 10%);
+	background-image: linear-gradient(
+		hsla(var(--hue), var(--sat), 20%, 0),
+		hsl(var(--hue), var(--sat), 20%)
+	);
+	box-shadow:
+		0 0.0625em 0 hsl(var(--hue), var(--sat), 25%) inset,
+		0 -0.0625em 0 hsl(var(--hue), var(--sat), 25%) inset,
+		0 0 0 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.1) inset;
+}
+
+.col--dark .horn-btn__icon .horn-icon {
+	color: hsl(var(--hue), var(--sat), 40%);
+}
+
+.col--dark .horn-btn[aria-pressed="true"]:before {
+	box-shadow: 0 0.375em 0.375em 0 hsla(var(--hue), 0%, 0%, 0.7);
+}
+
+.col--dark .horn-btn[aria-pressed="true"]:after {
+	background-color: hsl(var(--horn-hue), var(--horn-sat), 30%);
+	box-shadow:
+		0 0.0625em 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.5) inset,
+		0 -0.0625em 0 hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.5) inset,
+		0 0 1em 0.5em hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.2) inset,
+		0 0 2.5em 1em hsla(var(--horn-hue), var(--horn-sat), var(--horn-light), 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+	main {
+		flex-direction: row;
+	}
+}
